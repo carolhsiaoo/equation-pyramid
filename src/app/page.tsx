@@ -111,14 +111,18 @@ function AppPageContent() {
   // Track ticking sound to prevent multiple instances
   const tickingSoundActiveRef = useRef<boolean>(false);
 
-  // Cleanup confetti when component unmounts (navigating away from app)
+  // Cleanup confetti and audio when component unmounts (navigating away from app)
   useEffect(() => {
     return () => {
       // Stop confetti immediately when component unmounts
       setShowConfetti(false);
       setShouldShowConfettiAfterTransition(false);
+      // Stop all audio when navigating away
+      mainAudioControls.pause();
+      gameAudioControls.pause();
+      endSoundControls.pause();
     };
-  }, []);
+  }, [mainAudioControls, gameAudioControls, endSoundControls]);
 
   // Handle showSettings query parameter from tutorial completion
   useEffect(() => {

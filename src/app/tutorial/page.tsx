@@ -23,7 +23,12 @@ export default function TutorialPage() {
 
   useEffect(() => {
     startTutorial();
-  }, [startTutorial]);
+    
+    // Cleanup audio when component unmounts
+    return () => {
+      audioControls.pause();
+    };
+  }, [startTutorial, audioControls]);
 
   // Handle tutorial completion
   useEffect(() => {
