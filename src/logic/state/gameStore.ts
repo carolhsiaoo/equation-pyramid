@@ -118,7 +118,9 @@ const initialConfig: GameConfig = {
 };
 
 const getInitialAudioState = (): boolean => {
-  return true; // Default to true for SSR
+  // Always return false for initial SSR render to match client
+  // The hydrateAudioState will update this on client mount
+  return false;
 };
 
 const initialState: GameData = {
@@ -658,9 +660,18 @@ export const useGameStore = create<GameStoreState>()(
             set((state) => {
               state.isAudioEnabled = parsedValue;
             });
+          } else {
+            // If no stored value, set default to true and save it
+            set((state) => {
+              state.isAudioEnabled = true;
+            });
+            localStorage.setItem("isAudioEnabled", JSON.stringify(true));
           }
         } catch {
-          // Ignore localStorage errors
+          // Ignore localStorage errors but set default
+          set((state) => {
+            state.isAudioEnabled = true;
+          });
         }
       }
     },

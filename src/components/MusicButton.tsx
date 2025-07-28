@@ -53,7 +53,7 @@ export function MusicButton({ audioControls, trackType }: MusicButtonProps) {
   };
 
   // Show the music button state based on global audio state
-  // Use false during SSR to ensure consistent rendering
+  // During SSR and before hydration, show as off (matching store default)
   const isShowingAsOn = isHydrated ? isAudioEnabled : false;
 
   return (
@@ -63,25 +63,15 @@ export function MusicButton({ audioControls, trackType }: MusicButtonProps) {
       className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded hover:opacity-80 transition-opacity cursor-pointer"
       title={getTooltip()}
     >
-      {/* Preload both images by rendering them with display control */}
-      <div className="relative w-8 h-8 md:w-12 md:h-12">
-        <Image
-          src="/music.svg"
-          alt="Mute audio"
-          width={48}
-          height={48}
-          className={`absolute inset-0 w-8 h-8 md:w-12 md:h-12 ${isShowingAsOn ? 'opacity-100' : 'opacity-0'}`}
-          priority
-        />
-        <Image
-          src="/music-off.svg"
-          alt="Unmute audio"
-          width={48}
-          height={48}
-          className={`absolute inset-0 w-8 h-8 md:w-12 md:h-12 ${!isShowingAsOn ? 'opacity-100' : 'opacity-0'}`}
-          priority
-        />
-      </div>
+      <Image
+        src={isShowingAsOn ? "/music.svg" : "/music-off.svg"}
+        alt={isShowingAsOn ? "Mute audio" : "Unmute audio"}
+        width={48}
+        height={48}
+        className="w-8 h-8 md:w-12 md:h-12"
+        priority
+        unoptimized
+      />
     </button>
   );
 }
