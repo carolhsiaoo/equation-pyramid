@@ -6,7 +6,12 @@
       "Bash(git checkout:*)",
       "Bash(pnpm remove:*)",
       "Bash(git log:*)",
-      "Bash(pnpm install:*)"
+      "Bash(pnpm install:*)",
+      "Bash(tail:*)",
+      "Bash(dir:*)",
+      "Bash(ls:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm lint:*)"
     ],
     "deny": []
   }

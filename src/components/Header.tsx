@@ -23,7 +23,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" onClick={handleLogoClick} className="cursor-pointer">
           <Image
-            src="/logo.svg"
+            src="/Logo.svg"
             alt="Logo"
             width={120}
             height={32}
