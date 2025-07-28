@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, Suspense } from "react";
 import Confetti from "@/components/Confetti";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -15,7 +15,7 @@ import { GamePlayingView } from "@/views/GamePlayingView";
 import { GameSettingsView } from "@/views/GameSettingsView";
 import { HomeView } from "@/views/HomeView";
 
-export default function AppPage() {
+function AppPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -508,5 +508,13 @@ export default function AppPage() {
         }
       `}</style>
     </>
+  );
+}
+
+export default function AppPage() {
+  return (
+    <Suspense>
+      <AppPageContent />
+    </Suspense>
   );
 }

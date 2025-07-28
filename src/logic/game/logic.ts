@@ -510,4 +510,3 @@ const GameLogic = {
 };
 
 export default GameLogic;
-export { calculateEquationRaw, calculateEquation, generateGameState };
