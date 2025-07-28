@@ -137,6 +137,18 @@ export const GuessingStateSelectedThree: Story = {
   },
 };
 
+export const GuessingStateSelectedThreeWithFoundEquations: Story = {
+  args: {
+    ...baseArgs,
+    selectedPlayerId: "2",
+    storeOverrides: {
+      ...GuessingStateStart.args.storeOverrides,
+      selectedTiles: [3, 4, 5],
+      foundEquations: ["0,1,2", "3,4,5"],
+    },
+  },
+};
+
 export const GuessingWithLowTime: Story = {
   args: {
     ...baseArgs,

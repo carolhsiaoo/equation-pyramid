@@ -169,7 +169,7 @@ export function GamePlayingView({
           </div>
 
           {/* Right Column: Target tile - Desktop only */}
-          <div className="hidden md:flex flex-shrink-0 w-auto md:w-[160px] lg:w-[200px] justify-center md:justify-end order-1 md:order-2">
+          <div className="hidden md:flex w-auto md:w-[160px] lg:w-[200px] justify-center md:justify-end order-1 md:order-2">
             {gameState && <TargetTile targetNumber={gameState.targetNumber} />}
           </div>
         </div>
