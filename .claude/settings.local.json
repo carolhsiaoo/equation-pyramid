@@ -19,7 +19,11 @@
       "Bash(git hash-object:*)",
       "Bash(git cat-file:*)",
       "Bash(git mv:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(ls:*)",
+      "Bash(pnpm list:*)",
+      "Bash(copy publicweb-app-manifest-192x192.png srcappicon.png)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }
