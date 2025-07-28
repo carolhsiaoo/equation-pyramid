@@ -16,19 +16,22 @@ export interface TutorialStep {
 const tutorialSteps: TutorialStep[] = [
   {
     id: 1,
-    content: "Use three different tiles to form an equation that reaches the target number.",
+    content:
+      "Select three different tiles to create an equation that equals the target number.",
     showTiles: true,
     highlight: "tiles",
   },
   {
     id: 2,
-    content: "Ignore the operator on your first chosen tile.",
+    content:
+      "The operator on your first tile is ignored. Only its number matters.",
     showTiles: true,
     selectedTiles: [0], // Show tile A selected
   },
   {
     id: 3,
-    content: "Solve × and ÷ come before + and -",
+    content:
+      "Remember: multiplication (×) and division (÷) are calculated before addition (+) and subtraction (−).",
     showTiles: true,
     selectedTiles: [0, 8, 9], // Show tiles A, I, J selected
     showResult: true,
@@ -39,19 +42,20 @@ const tutorialSteps: TutorialStep[] = [
     id: 4,
     title: "Scoring Rules",
     content: [
-      "+1 → Get it right",
-      "-1 → Get it wrong",
-      "-1 → Click a correct answer that's already been found",
-      "-1 → Hit the button but don't answer in 10 seconds",
+      "+1 point for each correct answer",
+      "−1 point for incorrect answers",
+      "−1 point for selecting an already-found answer",
+      "−1 point if you don't answer within 10 seconds",
     ],
     highlight: "score",
   },
   {
     id: 5,
-    title: "Bonus tip",
+    title: "Pro Tips",
     content: [
-      "Each round ends when you've found all the answers or when the 3-minute timer runs out.",
-      "It would be 2 to 5 answers in each round, try to find as many as possible.",
+      "Each round contains 2–5 valid answers. Try to find them all!",
+      "Rounds end when all answers are found or the 3-minute timer ends.",
+      "Same tiles in different orders are considered different answers. Try to reorder them to find all answers!",
     ],
   },
 ];
@@ -125,7 +129,7 @@ export const useTutorialStore = create<TutorialState & TutorialActions>()(
           state.currentStep = step;
         }
       }),
-  }))
+  })),
 );
 
 export { tutorialSteps };
