@@ -17,21 +17,21 @@ const tutorialSteps: TutorialStep[] = [
   {
     id: 1,
     content:
-      "Select three different tiles to create an equation that equals the target number.",
+      "Pick 3 tiles. Form an equation = target number",
     showTiles: true,
     highlight: "tiles",
   },
   {
     id: 2,
     content:
-      "The operator on your first tile is ignored. Only its number matters.",
+      "First tile's operator is ignored",
     showTiles: true,
     selectedTiles: [0], // Show tile A selected
   },
   {
     id: 3,
     content:
-      "Remember: multiplication (×) and division (÷) are calculated before addition (+) and subtraction (−).",
+      "× and ÷ before + and −",
     showTiles: true,
     selectedTiles: [0, 8, 9], // Show tiles A, I, J selected
     showResult: true,
@@ -40,12 +40,12 @@ const tutorialSteps: TutorialStep[] = [
   },
   {
     id: 4,
-    title: "Scoring Rules",
+    title: "How to Score",
     content: [
-      "+1 point for each correct answer",
-      "−1 point for incorrect answers",
-      "−1 point for selecting an already-found answer",
-      "−1 point if you don't answer within 10 seconds",
+      "Correct = +1",
+      "Wrong = −1",
+      "Already found = −1",
+      "Too slow = −1",
     ],
     highlight: "score",
   },
@@ -53,9 +53,9 @@ const tutorialSteps: TutorialStep[] = [
     id: 5,
     title: "Pro Tips",
     content: [
-      "Each round contains 2–5 valid answers. Try to find them all!",
-      "Rounds end when all answers are found or the 3-minute timer ends.",
-      "Same tiles in different orders are considered different answers. Try to reorder them to find all answers!",
+      "2–5 answers per round",
+      "3 minutes per round",
+      "Order matters! ABC ≠ BAC",
     ],
   },
 ];
