@@ -11,7 +11,15 @@
       "Bash(dir:*)",
       "Bash(ls:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm lint:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git add:*)",
+      "Bash(test:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git hash-object:*)",
+      "Bash(git cat-file:*)",
+      "Bash(git mv:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }
