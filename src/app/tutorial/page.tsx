@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import TutorialView from "@/components/TutorialView";
 import { useTutorialStore } from "@/logic/state/tutorialStore";
 import { ShaderBackground } from "@/components/ShaderBackground";
-import { useAudio } from "@/hooks/useAudio";
+import { useBackgroundMusic } from "@/hooks/useBackgroundMusic";
 import { useGameStore } from "@/logic/state/gameStore";
 
 export default function TutorialPage() {
@@ -13,10 +13,9 @@ export default function TutorialPage() {
   const { startTutorial, exitTutorial } = useTutorialStore();
   const { exitToMenu } = useGameStore();
 
-  // Tutorial background music
-  const audioControls = useAudio("/audio/main-background-music.ogg", {
+  // Tutorial background music - SHARED WITH MAIN PAGE
+  const audioControls = useBackgroundMusic("/audio/main-background-music.ogg", {
     volume: 0.5,
-    loop: true,
     autoPlay: true,
     startTime: 0.025,
   });
@@ -24,12 +23,9 @@ export default function TutorialPage() {
   useEffect(() => {
     startTutorial();
     
-    // Cleanup audio when component unmounts
-    return () => {
-      audioControls.pause();
-    };
+    // No need to cleanup shared audio - it continues playing across pages
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startTutorial]); // audioControls excluded to prevent infinite loop
+  }, [startTutorial]);
 
   // Handle tutorial completion
   useEffect(() => {

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ShaderBackground } from "@/components/ShaderBackground";
-import { useAudio } from "@/hooks/useAudio";
+import { useBackgroundMusic } from "@/hooks/useBackgroundMusic";
 import { useGameStore } from "@/logic/state/gameStore";
 
 export default function LayoutContent({
@@ -15,10 +15,9 @@ export default function LayoutContent({
 }) {
   const pathname = usePathname();
 
-  // Background music for other pages - must be called before conditional return
-  const mainAudioControls = useAudio("/audio/main-background-music.ogg", {
+  // Background music for other pages - SHARED WITH ALL PAGES
+  const mainAudioControls = useBackgroundMusic("/audio/main-background-music.ogg", {
     volume: 0.5,
-    loop: true,
     autoPlay: false,
     startTime: 0.025,
   });

@@ -9,6 +9,7 @@ import { ShaderBackground } from "@/components/ShaderBackground";
 import TransitionOverlay from "@/components/TransitionOverlay";
 import { useAnswerSounds } from "@/hooks/useAnswerSounds";
 import { useAudio } from "@/hooks/useAudio";
+import { useBackgroundMusic } from "@/hooks/useBackgroundMusic";
 import { type GameAppState, useGameStore } from "@/logic/state/gameStore";
 import { GameOverView } from "@/views/GameOverView";
 import { GamePlayingView } from "@/views/GamePlayingView";
@@ -48,10 +49,9 @@ function AppPageContent() {
   // Debug mode
   const DEBUG = process.env.NODE_ENV === "development";
 
-  // Main menu background music - MANUAL CONTROL ONLY
-  const mainAudioControls = useAudio("/audio/main-background-music.ogg", {
+  // Main menu background music - SHARED ACROSS PAGES
+  const mainAudioControls = useBackgroundMusic("/audio/main-background-music.ogg", {
     volume: 0.5,
-    loop: true,
     autoPlay: false, // Disabled autoplay to prevent conflicts
     startTime: 0.025, // Skip first 50ms
   });
@@ -111,14 +111,14 @@ function AppPageContent() {
   // Track ticking sound to prevent multiple instances
   const tickingSoundActiveRef = useRef<boolean>(false);
 
-  // Cleanup confetti and audio when component unmounts (navigating away from app)
+  // Cleanup confetti and non-shared audio when component unmounts
   useEffect(() => {
     return () => {
       // Stop confetti immediately when component unmounts
       setShowConfetti(false);
       setShouldShowConfettiAfterTransition(false);
-      // Stop all audio when navigating away
-      mainAudioControls.pause();
+      // Stop only non-shared audio when navigating away
+      // mainAudioControls is shared, so don't pause it
       gameAudioControls.pause();
       endSoundControls.pause();
     };
