@@ -122,7 +122,8 @@ function AppPageContent() {
       gameAudioControls.pause();
       endSoundControls.pause();
     };
-  }, [mainAudioControls, gameAudioControls, endSoundControls]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty deps - we only want cleanup on unmount
 
   // Handle showSettings query parameter from tutorial completion
   useEffect(() => {

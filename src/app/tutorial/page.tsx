@@ -28,7 +28,8 @@ export default function TutorialPage() {
     return () => {
       audioControls.pause();
     };
-  }, [startTutorial, audioControls]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startTutorial]); // audioControls excluded to prevent infinite loop
 
   // Handle tutorial completion
   useEffect(() => {
