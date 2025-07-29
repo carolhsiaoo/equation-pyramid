@@ -262,7 +262,7 @@ export default function AboutPage() {
             </Typography>
             <div className="flex justify-center">
               <a
-                href="https://github.com/eason-dev/equation-pyramid"
+                href="https://github.com/carolhsiaoo/equation-pyramid"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 bg-black bg-opacity-60 hover:bg-opacity-80 rounded-lg transition-colors border border-white border-opacity-20"
