@@ -15,6 +15,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@next/third-parties": "^15.4.4",
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
     "babel-plugin-glsl": "^1.0.0",

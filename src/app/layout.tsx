@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import LayoutContent from "./layout-content";
+import { NEXT_PUBLIC_GOOGLE_ANALYTICS_ID } from "@/constants";
 
 import "@/styles/globals.css";
 
@@ -93,6 +95,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LayoutContent>{children}</LayoutContent>
+        {NEXT_PUBLIC_GOOGLE_ANALYTICS_ID &&
+          process.env.NODE_ENV === "production" && (
+            <GoogleAnalytics gaId={NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+          )}
       </body>
     </html>
   );

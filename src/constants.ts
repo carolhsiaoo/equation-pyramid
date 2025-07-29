@@ -1,4 +1,5 @@
 export const DEBUG = true;
+export const NEXT_PUBLIC_GOOGLE_ANALYTICS_ID = "G-NCXGB9SQK9";
 
 // Game Configuration Constants
 export const MAX_PLAYERS = 2;
